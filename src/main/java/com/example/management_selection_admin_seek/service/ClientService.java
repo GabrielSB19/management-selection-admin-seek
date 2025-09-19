@@ -2,6 +2,7 @@ package com.example.management_selection_admin_seek.service;
 
 import com.example.management_selection_admin_seek.dto.ClientCreateRequest;
 import com.example.management_selection_admin_seek.dto.ClientResponse;
+import com.example.management_selection_admin_seek.dto.ClientDetailResponse;
 import com.example.management_selection_admin_seek.dto.ClientMetricsResponse;
 import com.example.management_selection_admin_seek.entity.Client;
 import com.example.management_selection_admin_seek.mapper.ClientMapper;
@@ -27,6 +28,7 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
+    private final ClientCalculationService calculationService;
 
     /**
      * Create new client
@@ -65,6 +67,45 @@ public class ClientService {
                              "Calculated age: %d", providedAge, calculatedAge)
             );
         }
+    }
+
+    /**
+     * Get all clients with complete data and derived calculations
+     * REQUIREMENT: "List all registered clients with their complete data 
+     * and a derived calculation, such as an estimated date for a future event"
+     */
+    @Transactional(readOnly = true)
+    public List<ClientDetailResponse> getAllClientsWithDetails() {
+        log.info("Getting all clients with derived calculations");
+        
+        List<Client> clients = clientRepository.findAll();
+        
+        List<ClientDetailResponse> clientResponses = clients.stream()
+                .map(this::buildClientDetailResponse)
+                .toList();
+        
+        log.info("Retrieved {} clients with derived calculations", clientResponses.size());
+        
+        return clientResponses;
+    }
+
+    /**
+     * Build ClientDetailResponse with derived calculations
+     * Uses mapper for basic transformation and calculation service for business logic
+     */
+    private ClientDetailResponse buildClientDetailResponse(Client client) {
+        // Get basic mapping first (without calculations)
+        ClientDetailResponse response = clientMapper.toDetailResponse(client);
+        
+        // Add derived calculations using calculation service
+        LocalDate birthDate = client.getBirthDate();
+        response.setCalculatedCurrentAge(calculationService.calculateCurrentAge(birthDate));
+        response.setEstimatedRetirementDate(calculationService.calculateRetirementDate(birthDate));
+        response.setEstimatedLifeExpectancy(calculationService.calculateLifeExpectancy(birthDate));
+        response.setYearsToRetirement(calculationService.calculateYearsToRetirement(birthDate));
+        response.setEstimatedRemainingYears(calculationService.calculateRemainingYears(birthDate));
+        
+        return response;
     }
 
     /**

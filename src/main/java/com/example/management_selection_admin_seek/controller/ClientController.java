@@ -3,7 +3,10 @@ package com.example.management_selection_admin_seek.controller;
 import com.example.management_selection_admin_seek.api.ClientAPI;
 import com.example.management_selection_admin_seek.dto.ClientCreateRequest;
 import com.example.management_selection_admin_seek.dto.ClientResponse;
+import com.example.management_selection_admin_seek.dto.ClientDetailResponse;
 import com.example.management_selection_admin_seek.dto.ClientMetricsResponse;
+
+import java.util.List;
 import com.example.management_selection_admin_seek.service.ClientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -42,6 +45,25 @@ public class ClientController implements ClientAPI {
             
         } catch (Exception e) {
             log.error("Internal error creating client", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    /**
+     * Get all clients endpoint with derived calculations
+     * GET /api/client
+     */
+    @Override
+    public ResponseEntity<List<ClientDetailResponse>> getAllClients() {
+        log.info("GET /api/client - Getting all clients with derived calculations");
+        
+        try {
+            List<ClientDetailResponse> clients = clientService.getAllClientsWithDetails();
+            log.info("Retrieved {} clients with derived calculations", clients.size());
+            return ResponseEntity.ok(clients);
+            
+        } catch (Exception e) {
+            log.error("Internal error getting all clients", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
