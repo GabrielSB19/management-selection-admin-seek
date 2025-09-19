@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.management_selection_admin_seek.dto.ClientCreateRequest;
 import com.example.management_selection_admin_seek.dto.ClientResponse;
+import com.example.management_selection_admin_seek.dto.ClientDetailResponse;
 import com.example.management_selection_admin_seek.dto.ClientMetricsResponse;
+
+import java.util.List;
 
 import jakarta.validation.Valid;
 
@@ -28,6 +31,13 @@ public interface ClientAPI {
      */
     @PostMapping
     ResponseEntity<ClientResponse> createClient(@RequestBody @Valid ClientCreateRequest request);
+
+    /**
+     * Get all clients with complete data and derived calculations
+     * @return list of all clients with life expectancy and retirement estimations
+     */
+    @GetMapping
+    ResponseEntity<List<ClientDetailResponse>> getAllClients();
 
     /**
      * Get client metrics
