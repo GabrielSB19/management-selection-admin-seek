@@ -2,6 +2,7 @@ package com.example.management_selection_admin_seek.service;
 
 import com.example.management_selection_admin_seek.dto.ClientCreateRequest;
 import com.example.management_selection_admin_seek.dto.ClientResponse;
+import com.example.management_selection_admin_seek.dto.ClientMetricsResponse;
 import com.example.management_selection_admin_seek.entity.Client;
 import com.example.management_selection_admin_seek.mapper.ClientMapper;
 import com.example.management_selection_admin_seek.repository.ClientRepository;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 /**
  * Service for client management
@@ -62,6 +64,89 @@ public class ClientService {
                 String.format("Provided age (%d) is not consistent with birth date. " +
                              "Calculated age: %d", providedAge, calculatedAge)
             );
+        }
+    }
+
+    /**
+     * Get client metrics
+     * REQUIREMENT: "Query a set of metrics about existing clients, 
+     * such as average age and standard deviation of ages"
+     */
+    @Transactional(readOnly = true)
+    public ClientMetricsResponse getClientMetrics() {
+        log.info("Calculating client metrics");
+        
+        // Get basic counts and stats from database
+        long totalClients = clientRepository.count();
+        
+        if (totalClients == 0) {
+            log.info("No clients found, returning empty metrics");
+            return ClientMetricsResponse.builder()
+                .totalClients(0L)
+                .averageAge(0.0)
+                .standardDeviationAge(0.0)
+                .minAge(0)
+                .maxAge(0)
+                .medianAge(0.0)
+                .build();
+        }
+        
+        // Get statistical data
+        Double averageAge = clientRepository.findAverageAge();
+        Integer minAge = clientRepository.findMinAge();
+        Integer maxAge = clientRepository.findMaxAge();
+        List<Integer> allAges = clientRepository.findAllAges();
+        
+        // Calculate standard deviation
+        double standardDeviation = calculateStandardDeviation(allAges, averageAge);
+        
+        // Calculate median
+        double median = calculateMedian(allAges);
+        
+        log.info("Metrics calculated - Total: {}, Avg: {}, StdDev: {}", 
+                totalClients, averageAge, standardDeviation);
+        
+        return ClientMetricsResponse.builder()
+            .totalClients(totalClients)
+            .averageAge(Math.round(averageAge * 100.0) / 100.0) // Round to 2 decimals
+            .standardDeviationAge(Math.round(standardDeviation * 100.0) / 100.0)
+            .minAge(minAge)
+            .maxAge(maxAge)
+            .medianAge(Math.round(median * 100.0) / 100.0)
+            .build();
+    }
+
+    /**
+     * Calculate standard deviation of ages
+     */
+    private double calculateStandardDeviation(List<Integer> ages, double mean) {
+        if (ages.size() <= 1) {
+            return 0.0;
+        }
+        
+        double sum = 0.0;
+        for (Integer age : ages) {
+            sum += Math.pow(age - mean, 2);
+        }
+        
+        return Math.sqrt(sum / ages.size());
+    }
+
+    /**
+     * Calculate median of ages
+     */
+    private double calculateMedian(List<Integer> sortedAges) {
+        int size = sortedAges.size();
+        if (size == 0) {
+            return 0.0;
+        }
+        
+        if (size % 2 == 0) {
+            // Even number of elements - average of two middle values
+            return (sortedAges.get(size / 2 - 1) + sortedAges.get(size / 2)) / 2.0;
+        } else {
+            // Odd number of elements - middle value
+            return sortedAges.get(size / 2);
         }
     }
 }

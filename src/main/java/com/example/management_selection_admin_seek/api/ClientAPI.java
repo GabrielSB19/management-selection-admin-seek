@@ -1,12 +1,14 @@
 package com.example.management_selection_admin_seek.api;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.management_selection_admin_seek.dto.ClientCreateRequest;
 import com.example.management_selection_admin_seek.dto.ClientResponse;
+import com.example.management_selection_admin_seek.dto.ClientMetricsResponse;
 
 import jakarta.validation.Valid;
 
@@ -26,4 +28,11 @@ public interface ClientAPI {
      */
     @PostMapping
     ResponseEntity<ClientResponse> createClient(@RequestBody @Valid ClientCreateRequest request);
+
+    /**
+     * Get client metrics
+     * @return statistical metrics about existing clients
+     */
+    @GetMapping("/metrics")
+    ResponseEntity<ClientMetricsResponse> getClientMetrics();
 }

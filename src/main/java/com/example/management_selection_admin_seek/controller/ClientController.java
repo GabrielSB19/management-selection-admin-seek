@@ -3,6 +3,7 @@ package com.example.management_selection_admin_seek.controller;
 import com.example.management_selection_admin_seek.api.ClientAPI;
 import com.example.management_selection_admin_seek.dto.ClientCreateRequest;
 import com.example.management_selection_admin_seek.dto.ClientResponse;
+import com.example.management_selection_admin_seek.dto.ClientMetricsResponse;
 import com.example.management_selection_admin_seek.service.ClientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -41,6 +42,25 @@ public class ClientController implements ClientAPI {
             
         } catch (Exception e) {
             log.error("Internal error creating client", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    /**
+     * Get client metrics endpoint
+     * GET /api/client/metrics
+     */
+    @Override
+    public ResponseEntity<ClientMetricsResponse> getClientMetrics() {
+        log.info("GET /api/client/metrics - Getting client metrics");
+        
+        try {
+            ClientMetricsResponse metrics = clientService.getClientMetrics();
+            log.info("Metrics retrieved successfully - Total clients: {}", metrics.getTotalClients());
+            return ResponseEntity.ok(metrics);
+            
+        } catch (Exception e) {
+            log.error("Internal error getting client metrics", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
