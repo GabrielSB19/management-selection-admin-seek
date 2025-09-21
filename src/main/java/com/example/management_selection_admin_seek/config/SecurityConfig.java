@@ -51,13 +51,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            // Disable CSRF for stateless JWT authentication
             .csrf(AbstractHttpConfigurer::disable)
             
-            // Configure authorization rules properly
             .authorizeHttpRequests(auth -> auth
-                // Public endpoints (no authentication required) 
-                // NOTE: Context path /api is handled by Tomcat, Spring Security sees paths without context path
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/swagger-ui/**", "/api-docs/**").permitAll()
                 .requestMatchers("/actuator/**").permitAll()
@@ -73,15 +69,12 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
             
-            // Configure session management (stateless for JWT)
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
             
-            // Set authentication provider
             .authenticationProvider(authenticationProvider())
             
-            // Add JWT filter before UsernamePasswordAuthenticationFilter
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

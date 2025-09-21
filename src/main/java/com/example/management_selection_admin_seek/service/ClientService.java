@@ -127,8 +127,8 @@ public class ClientService {
                 .totalClients(0L)
                 .averageAge(0.0)
                 .standardDeviationAge(0.0)
-                .minAge(0)
-                .maxAge(0)
+                .minAge(null)
+                .maxAge(null)
                 .medianAge(0.0)
                 .build();
         }
