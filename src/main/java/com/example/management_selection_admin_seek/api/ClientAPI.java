@@ -22,13 +22,17 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
- * Client Management API
+ * Client Management API - Protected Endpoints
  * Provides endpoints for client registration, listing, and analytics
+ * 
+ * 🔒 AUTHENTICATION REQUIRED: All endpoints require valid JWT authentication
+ * Use the 'Authorize' button above to authenticate with your access token
  */
-@Tag(name = "Client Management", description = "API for managing clients in the candidate selection system")
+@Tag(name = "Client Management", description = "API for managing clients in the candidate selection system (🔒 Authentication Required)")
 @RequestMapping(ClientAPI.BASE_URL)
 public interface ClientAPI {
 
@@ -38,9 +42,11 @@ public interface ClientAPI {
      * Create a new client
      */
     @Operation(
-        summary = "Create a new client",
+        summary = "🔒 Create a new client",
         description = "Register a new client with personal information including name, age, and birth date. " +
-                      "Age consistency with birth date is validated (max 1 year difference allowed)."
+                      "Age consistency with birth date is validated (max 1 year difference allowed). " +
+                      "**Requires JWT authentication.**",
+        security = @SecurityRequirement(name = "Bearer Authentication")
     )
     @ApiResponses(value = {
         @ApiResponse(
@@ -52,6 +58,17 @@ public interface ClientAPI {
                 examples = @ExampleObject(
                     name = "Client Created",
                     value = "{\"id\":1,\"name\":\"Juan\",\"lastName\":\"Pérez\",\"fullName\":\"Juan Pérez\",\"age\":30,\"birthDate\":\"1993-05-15\",\"creationDate\":\"2025-09-19T10:00:00\",\"updateDate\":\"2025-09-19T10:00:00\"}"
+                )
+            )
+        ),
+        @ApiResponse(
+            responseCode = "401",
+            description = "Unauthorized - Invalid or missing JWT token",
+            content = @Content(
+                mediaType = "application/json",
+                examples = @ExampleObject(
+                    name = "Unauthorized",
+                    value = "{\"timestamp\":\"2025-09-19T10:00:00.000+00:00\",\"status\":401,\"error\":\"Unauthorized\",\"message\":\"JWT token is missing or invalid\"}"
                 )
             )
         ),
@@ -78,9 +95,11 @@ public interface ClientAPI {
      * Get all clients with derived calculations
      */
     @Operation(
-        summary = "Get all clients with derived calculations",
+        summary = "🔒 Get all clients with derived calculations",
         description = "Retrieve a complete list of all registered clients with their basic information " +
-                      "plus derived calculations including life expectancy, retirement date, and remaining years."
+                      "plus derived calculations including life expectancy, retirement date, and remaining years. " +
+                      "**Requires JWT authentication.**",
+        security = @SecurityRequirement(name = "Bearer Authentication")
     )
     @ApiResponses(value = {
         @ApiResponse(
@@ -95,6 +114,17 @@ public interface ClientAPI {
                 )
             )
         ),
+        @ApiResponse(
+            responseCode = "401",
+            description = "Unauthorized - Invalid or missing JWT token",
+            content = @Content(
+                mediaType = "application/json",
+                examples = @ExampleObject(
+                    name = "Unauthorized",
+                    value = "{\"timestamp\":\"2025-09-19T10:00:00.000+00:00\",\"status\":401,\"error\":\"Unauthorized\",\"message\":\"JWT token is missing or invalid\"}"
+                )
+            )
+        ),
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @GetMapping
@@ -104,9 +134,11 @@ public interface ClientAPI {
      * Get client metrics and statistics
      */
     @Operation(
-        summary = "Get client analytics and metrics",
+        summary = "🔒 Get client analytics and metrics",
         description = "Retrieve statistical information about all clients including average age, " +
-                      "standard deviation, minimum and maximum ages, median age, and total client count."
+                      "standard deviation, minimum and maximum ages, median age, and total client count. " +
+                      "**Requires JWT authentication.**",
+        security = @SecurityRequirement(name = "Bearer Authentication")
     )
     @ApiResponses(value = {
         @ApiResponse(
@@ -118,6 +150,17 @@ public interface ClientAPI {
                 examples = @ExampleObject(
                     name = "Client Metrics",
                     value = "{\"totalClients\":7,\"averageAge\":31.5,\"standardDeviationAge\":5.2,\"minAge\":25,\"maxAge\":42,\"medianAge\":31.0}"
+                )
+            )
+        ),
+        @ApiResponse(
+            responseCode = "401",
+            description = "Unauthorized - Invalid or missing JWT token",
+            content = @Content(
+                mediaType = "application/json",
+                examples = @ExampleObject(
+                    name = "Unauthorized",
+                    value = "{\"timestamp\":\"2025-09-19T10:00:00.000+00:00\",\"status\":401,\"error\":\"Unauthorized\",\"message\":\"JWT token is missing or invalid\"}"
                 )
             )
         ),
