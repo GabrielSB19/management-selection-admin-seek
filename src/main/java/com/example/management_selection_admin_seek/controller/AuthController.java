@@ -3,6 +3,7 @@ package com.example.management_selection_admin_seek.controller;
 import com.example.management_selection_admin_seek.api.AuthAPI;
 import com.example.management_selection_admin_seek.dto.auth.*;
 import com.example.management_selection_admin_seek.entity.User;
+import com.example.management_selection_admin_seek.exception.InvalidTokenException;
 import com.example.management_selection_admin_seek.mapper.AuthMapper;
 import com.example.management_selection_admin_seek.service.JwtService;
 import com.example.management_selection_admin_seek.service.UserService;
@@ -62,37 +63,31 @@ public class AuthController implements AuthAPI {
     public ResponseEntity<LoginResponse> login(@Valid LoginRequest request) {
         log.info("Login attempt for: {}", request.getIdentifier());
 
-        try {
-            // Authenticate user
-            Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                    request.getIdentifier(),
-                    request.getPassword()
-                )
-            );
+        // Authenticate user
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(
+                request.getIdentifier(),
+                request.getPassword()
+            )
+        );
 
-            // Get authenticated user
-            User user = (User) authentication.getPrincipal();
-            
-            // Generate JWT tokens
-            String accessToken = jwtService.generateToken(user);
-            String refreshToken = jwtService.generateRefreshToken(user);
-            
-            // Build response using mapper (same pattern as other controllers)
-            LoginResponse response = authMapper.toLoginResponse(
-                    user, 
-                    accessToken, 
-                    refreshToken, 
-                    jwtService.getJwtExpirationInSeconds()
-            );
+        // Get authenticated user
+        User user = (User) authentication.getPrincipal();
+        
+        // Generate JWT tokens
+        String accessToken = jwtService.generateToken(user);
+        String refreshToken = jwtService.generateRefreshToken(user);
+        
+        // Build response using mapper (same pattern as other controllers)
+        LoginResponse response = authMapper.toLoginResponse(
+                user, 
+                accessToken, 
+                refreshToken, 
+                jwtService.getJwtExpirationInSeconds()
+        );
 
-            log.info("Login successful for user: {}", user.getUsername());
-            return ResponseEntity.ok(response);
-
-        } catch (Exception e) {
-            log.warn("Login failed for: {}", request.getIdentifier());
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
+        log.info("Login successful for user: {}", user.getUsername());
+        return ResponseEntity.ok(response);
     }
 
     /**
@@ -109,19 +104,9 @@ public class AuthController implements AuthAPI {
     public ResponseEntity<RegisterResponse> register(@Valid RegisterRequest request) {
         log.info("Registration attempt for: {}", request.getUsername());
 
-        try {
-            RegisterResponse response = userService.registerUser(request);
-            log.info("Registration successful for: {}", request.getUsername());
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
-
-        } catch (IllegalArgumentException e) {
-            log.warn("Registration failed for {}: {}", request.getUsername(), e.getMessage());
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
-            
-        } catch (Exception e) {
-            log.error("Registration error for: {}", request.getUsername(), e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        RegisterResponse response = userService.registerUser(request);
+        log.info("Registration successful for: {}", request.getUsername());
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     /**
@@ -144,37 +129,31 @@ public class AuthController implements AuthAPI {
     public ResponseEntity<LoginResponse> refreshToken(@Valid RefreshTokenRequest request) {
         log.debug("Token refresh attempt");
 
-        try {
-            String refreshToken = request.getRefreshToken();
-            
-            // Extract username from refresh token
-            String username = jwtService.extractUsername(refreshToken);
-            
-            // Load user details
-            UserDetails userDetails = userService.loadUserByUsername(username);
-            
-            // Validate refresh token
-            if (!jwtService.isTokenValid(refreshToken, userDetails)) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-
-            // Generate new tokens
-            String newAccessToken = jwtService.generateToken(userDetails);
-            String newRefreshToken = jwtService.generateRefreshToken(userDetails);
-
-            // Build response using mapper (same pattern as other controllers)
-            LoginResponse response = authMapper.toRefreshResponse(
-                    newAccessToken, 
-                    newRefreshToken, 
-                    jwtService.getJwtExpirationInSeconds()
-            );
-
-            log.debug("Token refresh successful for: {}", username);
-            return ResponseEntity.ok(response);
-
-        } catch (Exception e) {
-            log.warn("Token refresh failed", e);
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        String refreshToken = request.getRefreshToken();
+        
+        // Extract username from refresh token
+        String username = jwtService.extractUsername(refreshToken);
+        
+        // Load user details
+        UserDetails userDetails = userService.loadUserByUsername(username);
+        
+        // Validate refresh token
+        if (!jwtService.isTokenValid(refreshToken, userDetails)) {
+            throw new InvalidTokenException("Refresh token is invalid or expired");
         }
+
+        // Generate new tokens
+        String newAccessToken = jwtService.generateToken(userDetails);
+        String newRefreshToken = jwtService.generateRefreshToken(userDetails);
+
+        // Build response using mapper (same pattern as other controllers)
+        LoginResponse response = authMapper.toRefreshResponse(
+                newAccessToken, 
+                newRefreshToken, 
+                jwtService.getJwtExpirationInSeconds()
+        );
+
+        log.debug("Token refresh successful for: {}", username);
+        return ResponseEntity.ok(response);
     }
 }
