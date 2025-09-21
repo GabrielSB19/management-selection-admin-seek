@@ -40,6 +40,9 @@ class ClientServiceTest {
 
     @Mock
     private ClientCalculationService calculationService;
+    
+    @Mock
+    private AsyncProcessingService asyncProcessingService;
 
     @InjectMocks
     private ClientService clientService;

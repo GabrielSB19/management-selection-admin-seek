@@ -36,6 +36,7 @@ public class ClientService {
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
     private final ClientCalculationService calculationService;
+    private final AsyncProcessingService asyncProcessingService;
 
     /**
      * Create new client
@@ -63,6 +64,9 @@ public class ClientService {
         Client savedClient = clientRepository.save(client);
         
         log.info("Client created successfully with ID: {}", savedClient.getId());
+        
+        // 🚀 ASYNC: Process client in background (non-blocking)
+        asyncProcessingService.processNewClient(savedClient);
         
         // Convert entity to response DTO using MapStruct
         return clientMapper.toResponse(savedClient);
