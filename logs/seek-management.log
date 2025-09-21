@@ -113,3 +113,892 @@
 2025-09-21 17:04:49 [http-nio-8080-exec-7] INFO  c.e.m.controller.AuthController - Login successful for user: testuser
 2025-09-21 17:04:49 [http-nio-8080-exec-9] INFO  c.e.m.controller.AuthController - Login attempt for: fake
 2025-09-21 17:04:50 [http-nio-8080-exec-9] WARN  c.e.m.e.GlobalExceptionHandler - Authentication failed on /api/auth/login: User not found: fake
+2025-09-21 17:32:32 [Test worker] INFO  c.e.m.ManagementSelectionAdminSeekApplicationTests - Starting ManagementSelectionAdminSeekApplicationTests using Java 21.0.8 with PID 41610 (started by gsuarezbaron in /Users/gsuarezbaron/Desktop/Seek/management-selection-admin-seek)
+2025-09-21 17:32:32 [Test worker] INFO  c.e.m.ManagementSelectionAdminSeekApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-09-21 17:32:33 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-21 17:32:33 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 51 ms. Found 2 JPA repository interfaces.
+2025-09-21 17:32:33 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-09-21 17:32:34 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2933669e
+2025-09-21 17:32:34 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-09-21 17:32:34 [Test worker] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://localhost:3306/seek_admin_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC (MySQL 9.4)
+2025-09-21 17:32:34 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MySQL 9.4 is newer than this version of Flyway and support has not been tested. The latest supported version of MySQL is 8.1.
+2025-09-21 17:32:34 [Test worker] INFO  o.f.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.026s)
+2025-09-21 17:32:34 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `seek_admin_db`: 2
+2025-09-21 17:32:34 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Schema `seek_admin_db` is up to date. No migration necessary.
+2025-09-21 17:32:34 [Test worker] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-21 17:32:34 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-21 17:32:34 [Test worker] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-21 17:32:34 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-21 17:32:34 [Test worker] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-21 17:32:34 [Test worker] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-21 17:32:35 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-21 17:32:35 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:32:35 [Test worker] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-09-21 17:32:36 [Test worker] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-21 17:32:36 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2025-09-21 17:32:37 [Test worker] INFO  c.e.m.ManagementSelectionAdminSeekApplicationTests - Started ManagementSelectionAdminSeekApplicationTests in 5.111 seconds (process running for 6.295)
+2025-09-21 17:32:38 [Test worker] WARN  c.e.m.config.JwtAuthenticationFilter - JWT token processing failed: Invalid JWT
+2025-09-21 17:32:38 [Test worker] ERROR c.e.m.config.JwtAuthenticationFilter - Error processing JWT authentication
+java.lang.RuntimeException: Unexpected error
+	at com.example.management_selection_admin_seek.service.JwtService.extractUsername(JwtService.java:60)
+	at com.example.management_selection_admin_seek.config.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:64)
+	at com.example.management_selection_admin_seek.config.JwtAuthenticationFilterTest.doFilterInternal_GeneralException_ShouldClearContextAndContinue(JwtAuthenticationFilterTest.java:275)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775)
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39)
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:124)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:99)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:94)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:63)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:92)
+	at jdk.proxy2/jdk.proxy2.$Proxy6.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:200)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:132)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:122)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:72)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.AuthController - Login attempt for: testuser
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.AuthController - Login successful for user: testuser
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.AuthController - Login attempt for: testuser
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.AuthController - Registration attempt for: testuser
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.AuthController - Registration attempt for: testuser
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.AuthController - Registration successful for: testuser
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.AuthController - Login attempt for: testuser
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.AuthController - Login successful for user: testuser
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.AuthController - Registration attempt for: testuser
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.AuthController - Registration successful for: testuser
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - POST /api/clients - Creating client: John Doe
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - Client created successfully with ID: 1
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - GET /api/client - Getting clients with pagination: page=0, size=20
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - Retrieved 1 clients (page 1/1) with derived calculations
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - GET /api/client/metrics - Getting client metrics
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - Metrics retrieved successfully - Total clients: 5
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - POST /api/clients - Creating client: John Doe
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - Client created successfully with ID: 1
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - GET /api/client/metrics - Getting client metrics
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - Metrics retrieved successfully - Total clients: 5
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - GET /api/client - Getting clients with pagination: page=0, size=20
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - Retrieved 0 clients (page 1/0) with derived calculations
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - POST /api/clients - Creating client: John Doe
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - GET /api/client - Getting clients with pagination: page=0, size=20
+2025-09-21 17:32:38 [Test worker] INFO  c.e.m.controller.ClientController - Retrieved 1 clients (page 1/1) with derived calculations
+2025-09-21 17:32:38 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Validation error on /api/test: Validation failed for argument [-1] in public java.lang.String java.lang.Object.toString(): 
+2025-09-21 17:32:38 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Data integrity violation on /api/test: Data integrity violation
+2025-09-21 17:32:38 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Type mismatch on /api/test: null
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Constraint violation on /api/test: Constraint violation message
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Illegal argument on /api/test: Invalid argument provided
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Business rule violation on /api/test: Business rule violated
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Resource not found on /api/test: Resource not found
+2025-09-21 17:32:39 [Test worker] ERROR c.e.m.e.GlobalExceptionHandler - Unexpected error on /api/test: 
+java.lang.RuntimeException: Unexpected error
+	at com.example.management_selection_admin_seek.exception.GlobalExceptionHandlerTest.handleGenericException_ShouldReturn500(GlobalExceptionHandlerTest.java:306)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775)
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39)
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:124)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:99)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:94)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:63)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:92)
+	at jdk.proxy2/jdk.proxy2.$Proxy6.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:200)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:132)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:122)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:72)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Authentication failed on /api/test: Bad credentials
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Resource conflict on /api/test: Resource already exists
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Invalid token on /api/test: Token is invalid
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Access denied on /api/test: Access denied
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Custom authentication error on /api/test: Custom auth error
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Business rule violation on /api/test: Test error
+2025-09-21 17:32:39 [Test worker] WARN  c.e.m.e.GlobalExceptionHandler - Business rule violation on /api/custom/path: Test error
+2025-09-21 17:32:39 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.AuthMapperTest]: AuthMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:32:39 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.AuthMapperTest
+2025-09-21 17:32:39 [Test worker] INFO  c.e.m.mapper.AuthMapperTest - Starting AuthMapperTest using Java 21.0.8 with PID 41610 (started by gsuarezbaron in /Users/gsuarezbaron/Desktop/Seek/management-selection-admin-seek)
+2025-09-21 17:32:39 [Test worker] INFO  c.e.m.mapper.AuthMapperTest - The following 1 profile is active: "test"
+2025-09-21 17:32:39 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-21 17:32:39 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 2 JPA repository interfaces.
+2025-09-21 17:32:39 [Test worker] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-21 17:32:39 [Test worker] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-21 17:32:39 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-21 17:32:39 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-09-21 17:32:39 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-09-21 17:32:39 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-09-21 17:32:40 [Test worker] WARN  org.hibernate.dialect.Dialect - HHH000511: The 2.3.232 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-09-21 17:32:40 [Test worker] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-21 17:32:40 [Test worker] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-21 17:32:40 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-21 17:32:40 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:32:40 [Test worker] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-21 17:32:40 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-09-21 17:32:40 [Test worker] INFO  c.e.m.mapper.AuthMapperTest - Started AuthMapperTest in 1.598 seconds (process running for 9.653)
+2025-09-21 17:32:40 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.ClientMapperTest]: ClientMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:32:40 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.ClientMapperTest
+2025-09-21 17:32:40 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.TokenMapperTest]: TokenMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:32:40 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.TokenMapperTest
+2025-09-21 17:32:40 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.UserMapperTest]: UserMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:32:40 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.UserMapperTest
+2025-09-21 17:32:40 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.repository.ClientRepositoryTest]: ClientRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:32:41 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.repository.ClientRepositoryTest
+2025-09-21 17:32:41 [Test worker] INFO  c.e.m.r.ClientRepositoryTest - Starting ClientRepositoryTest using Java 21.0.8 with PID 41610 (started by gsuarezbaron in /Users/gsuarezbaron/Desktop/Seek/management-selection-admin-seek)
+2025-09-21 17:32:41 [Test worker] INFO  c.e.m.r.ClientRepositoryTest - The following 1 profile is active: "test"
+2025-09-21 17:32:41 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-21 17:32:41 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 2 JPA repository interfaces.
+2025-09-21 17:32:41 [Test worker] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-21 17:32:41 [Test worker] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-21 17:32:41 [Test worker] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-21 17:32:41 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2025-09-21 17:32:41 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection conn5: url=jdbc:h2:mem:testdb user=SA
+2025-09-21 17:32:41 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2025-09-21 17:32:41 [Test worker] WARN  org.hibernate.dialect.Dialect - HHH000511: The 2.3.232 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-09-21 17:32:41 [Test worker] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-21 17:32:41 [Test worker] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-21 17:32:41 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-21 17:32:41 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:32:41 [Test worker] INFO  c.e.m.r.ClientRepositoryTest - Started ClientRepositoryTest in 0.334 seconds (process running for 10.358)
+2025-09-21 17:32:41 [Test worker] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.repository.UserRepositoryTest]: UserRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:32:41 [Test worker] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.repository.UserRepositoryTest
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 5, Avg: 35.0, StdDev: 7.0710678118654755
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Getting all clients with derived calculations
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Retrieved 1 clients with derived calculations
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 3, Avg: 30.0, StdDev: 8.16496580927726
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - No clients found, returning empty metrics
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 5, Avg: 30.0, StdDev: 7.0710678118654755
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 4, Avg: 30.0, StdDev: 7.905694150420948
+2025-09-21 17:32:42 [Test worker] WARN  c.e.m.service.JwtService - JWT token has expired: JWT expired 3600308 milliseconds ago at 2025-09-21T21:32:42.000Z. Current time: 2025-09-21T22:32:42.308Z. Allowed clock skew: 0 milliseconds.
+2025-09-21 17:32:42 [Test worker] WARN  c.e.m.service.JwtService - JWT token expiration check failed: JWT expired 3600308 milliseconds ago at 2025-09-21T21:32:42.000Z. Current time: 2025-09-21T22:32:42.308Z. Allowed clock skew: 0 milliseconds.
+2025-09-21 17:32:42 [Test worker] WARN  c.e.m.service.JwtService - JWT token is malformed: Invalid compact JWT string: Compact JWSs must contain exactly 2 period characters, and compact JWEs must contain exactly 4.  Found: 6
+2025-09-21 17:32:42 [Test worker] WARN  c.e.m.service.JwtService - JWT token is null or empty: CharSequence cannot be null or empty.
+2025-09-21 17:32:42 [Test worker] WARN  c.e.m.service.JwtService - JWT token is null or empty: CharSequence cannot be null or empty.
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.UserService - User registered successfully with ID: 1
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.UserService - User registered successfully with ID: 1
+2025-09-21 17:32:42 [Test worker] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:32:42 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:32:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-09-21 17:32:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-09-21 17:32:42 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:32:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-09-21 17:32:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-09-21 17:32:42 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:32:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2025-09-21 17:32:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2025-09-21 17:37:14 [main] INFO  c.e.m.ManagementSelectionAdminSeekApplicationTests - Starting ManagementSelectionAdminSeekApplicationTests using Java 21.0.8 with PID 42462 (started by gsuarezbaron in /Users/gsuarezbaron/Desktop/Seek/management-selection-admin-seek)
+2025-09-21 17:37:14 [main] INFO  c.e.m.ManagementSelectionAdminSeekApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-09-21 17:37:15 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-21 17:37:15 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50 ms. Found 2 JPA repository interfaces.
+2025-09-21 17:37:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-09-21 17:37:15 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@188ab96
+2025-09-21 17:37:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-09-21 17:37:15 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://localhost:3306/seek_admin_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC (MySQL 9.4)
+2025-09-21 17:37:15 [main] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MySQL 9.4 is newer than this version of Flyway and support has not been tested. The latest supported version of MySQL is 8.1.
+2025-09-21 17:37:15 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.022s)
+2025-09-21 17:37:15 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `seek_admin_db`: 2
+2025-09-21 17:37:15 [main] INFO  o.f.core.internal.command.DbMigrate - Schema `seek_admin_db` is up to date. No migration necessary.
+2025-09-21 17:37:15 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-21 17:37:15 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-21 17:37:15 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-21 17:37:15 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-21 17:37:15 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-21 17:37:15 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-21 17:37:16 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-21 17:37:16 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:37:16 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-09-21 17:37:16 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-21 17:37:17 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2025-09-21 17:37:17 [main] INFO  c.e.m.ManagementSelectionAdminSeekApplicationTests - Started ManagementSelectionAdminSeekApplicationTests in 3.824 seconds (process running for 5.612)
+2025-09-21 17:37:17 [main] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:37:17 [main] INFO  c.e.m.service.UserService - User registered successfully with ID: 1
+2025-09-21 17:37:17 [main] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:37:17 [main] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:37:17 [main] INFO  c.e.m.service.UserService - User registered successfully with ID: 1
+2025-09-21 17:37:17 [main] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:37:18 [main] WARN  c.e.m.service.JwtService - JWT token has expired: JWT expired 3600031 milliseconds ago at 2025-09-21T21:37:18.000Z. Current time: 2025-09-21T22:37:18.031Z. Allowed clock skew: 0 milliseconds.
+2025-09-21 17:37:18 [main] WARN  c.e.m.service.JwtService - JWT token expiration check failed: JWT expired 3600031 milliseconds ago at 2025-09-21T21:37:18.000Z. Current time: 2025-09-21T22:37:18.031Z. Allowed clock skew: 0 milliseconds.
+2025-09-21 17:37:18 [main] WARN  c.e.m.service.JwtService - JWT token is malformed: Invalid compact JWT string: Compact JWSs must contain exactly 2 period characters, and compact JWEs must contain exactly 4.  Found: 6
+2025-09-21 17:37:18 [main] WARN  c.e.m.service.JwtService - JWT token is null or empty: CharSequence cannot be null or empty.
+2025-09-21 17:37:18 [main] WARN  c.e.m.service.JwtService - JWT token is null or empty: CharSequence cannot be null or empty.
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 5, Avg: 35.0, StdDev: 7.0710678118654755
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Getting all clients with derived calculations
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Retrieved 1 clients with derived calculations
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 3, Avg: 30.0, StdDev: 8.16496580927726
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - No clients found, returning empty metrics
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 5, Avg: 30.0, StdDev: 7.0710678118654755
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:37:18 [main] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 4, Avg: 30.0, StdDev: 7.905694150420948
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.AuthController - Login attempt for: testuser
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.AuthController - Login successful for user: testuser
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.AuthController - Login attempt for: testuser
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.AuthController - Registration attempt for: testuser
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.AuthController - Registration attempt for: testuser
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.AuthController - Registration successful for: testuser
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.AuthController - Login attempt for: testuser
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.AuthController - Login successful for user: testuser
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.AuthController - Registration attempt for: testuser
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.AuthController - Registration successful for: testuser
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - POST /api/clients - Creating client: John Doe
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - Client created successfully with ID: 1
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - GET /api/client - Getting clients with pagination: page=0, size=20
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - Retrieved 1 clients (page 1/1) with derived calculations
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - GET /api/client/metrics - Getting client metrics
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - Metrics retrieved successfully - Total clients: 5
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - POST /api/clients - Creating client: John Doe
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - Client created successfully with ID: 1
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - GET /api/client/metrics - Getting client metrics
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - Metrics retrieved successfully - Total clients: 5
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - GET /api/client - Getting clients with pagination: page=0, size=20
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - Retrieved 0 clients (page 1/0) with derived calculations
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - POST /api/clients - Creating client: John Doe
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - GET /api/client - Getting clients with pagination: page=0, size=20
+2025-09-21 17:37:18 [main] INFO  c.e.m.controller.ClientController - Retrieved 1 clients (page 1/1) with derived calculations
+2025-09-21 17:37:18 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.repository.ClientRepositoryTest]: ClientRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:37:18 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.repository.ClientRepositoryTest
+2025-09-21 17:37:18 [main] INFO  c.e.m.r.ClientRepositoryTest - Starting ClientRepositoryTest using Java 21.0.8 with PID 42462 (started by gsuarezbaron in /Users/gsuarezbaron/Desktop/Seek/management-selection-admin-seek)
+2025-09-21 17:37:18 [main] INFO  c.e.m.r.ClientRepositoryTest - The following 1 profile is active: "test"
+2025-09-21 17:37:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-21 17:37:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 2 JPA repository interfaces.
+2025-09-21 17:37:18 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-21 17:37:18 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-21 17:37:18 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-21 17:37:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-09-21 17:37:18 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-09-21 17:37:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-09-21 17:37:18 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 2.3.232 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-09-21 17:37:18 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-21 17:37:18 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-21 17:37:18 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-21 17:37:18 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:37:18 [main] INFO  c.e.m.r.ClientRepositoryTest - Started ClientRepositoryTest in 0.341 seconds (process running for 6.614)
+2025-09-21 17:37:19 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.repository.UserRepositoryTest]: UserRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:37:19 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.repository.UserRepositoryTest
+2025-09-21 17:37:19 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.ClientMapperTest]: ClientMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:37:19 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.ClientMapperTest
+2025-09-21 17:37:19 [main] INFO  c.e.m.mapper.ClientMapperTest - Starting ClientMapperTest using Java 21.0.8 with PID 42462 (started by gsuarezbaron in /Users/gsuarezbaron/Desktop/Seek/management-selection-admin-seek)
+2025-09-21 17:37:19 [main] INFO  c.e.m.mapper.ClientMapperTest - The following 1 profile is active: "test"
+2025-09-21 17:37:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-21 17:37:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 2 JPA repository interfaces.
+2025-09-21 17:37:19 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-21 17:37:19 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-21 17:37:19 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-21 17:37:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2025-09-21 17:37:19 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection conn6: url=jdbc:h2:mem:testdb user=SA
+2025-09-21 17:37:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2025-09-21 17:37:19 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 2.3.232 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-09-21 17:37:19 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-21 17:37:19 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-21 17:37:19 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-21 17:37:19 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:37:19 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-21 17:37:19 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-09-21 17:37:19 [main] INFO  c.e.m.mapper.ClientMapperTest - Started ClientMapperTest in 0.495 seconds (process running for 7.729)
+2025-09-21 17:37:19 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.UserMapperTest]: UserMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:37:19 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.UserMapperTest
+2025-09-21 17:37:19 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.TokenMapperTest]: TokenMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:37:19 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.TokenMapperTest
+2025-09-21 17:37:20 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.AuthMapperTest]: AuthMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:37:20 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.AuthMapperTest
+2025-09-21 17:37:20 [main] WARN  c.e.m.config.JwtAuthenticationFilter - JWT token processing failed: Invalid JWT
+2025-09-21 17:37:20 [main] ERROR c.e.m.config.JwtAuthenticationFilter - Error processing JWT authentication
+java.lang.RuntimeException: Unexpected error
+	at com.example.management_selection_admin_seek.service.JwtService.extractUsername(JwtService.java:60)
+	at com.example.management_selection_admin_seek.config.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:64)
+	at com.example.management_selection_admin_seek.config.JwtAuthenticationFilterTest.doFilterInternal_GeneralException_ShouldClearContextAndContinue(JwtAuthenticationFilterTest.java:275)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775)
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:94)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:52)
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$2(InterceptingLauncher.java:47)
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:46)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:52)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:70)
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:100)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:520)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:748)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:443)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:211)
+2025-09-21 17:37:20 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:37:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-09-21 17:37:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-09-21 17:37:20 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:37:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-09-21 17:37:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-09-21 17:37:20 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:37:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2025-09-21 17:37:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2025-09-21 17:43:26 [main] INFO  c.e.m.mapper.UserMapperTest - Starting UserMapperTest using Java 21.0.8 with PID 43538 (started by gsuarezbaron in /Users/gsuarezbaron/Desktop/Seek/management-selection-admin-seek)
+2025-09-21 17:43:26 [main] INFO  c.e.m.mapper.UserMapperTest - The following 1 profile is active: "test"
+2025-09-21 17:43:27 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-21 17:43:27 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 46 ms. Found 2 JPA repository interfaces.
+2025-09-21 17:43:27 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-21 17:43:27 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-21 17:43:27 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-21 17:43:27 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-21 17:43:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-09-21 17:43:27 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-09-21 17:43:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-09-21 17:43:27 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 2.3.232 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-09-21 17:43:27 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-21 17:43:27 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-21 17:43:28 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-21 17:43:28 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:43:28 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-09-21 17:43:28 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-21 17:43:29 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-09-21 17:43:29 [main] INFO  c.e.m.mapper.UserMapperTest - Started UserMapperTest in 3.188 seconds (process running for 4.874)
+2025-09-21 17:43:29 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.TokenMapperTest]: TokenMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:43:29 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.TokenMapperTest
+2025-09-21 17:43:29 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.AuthMapperTest]: AuthMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:43:29 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.AuthMapperTest
+2025-09-21 17:43:29 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.mapper.ClientMapperTest]: ClientMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:43:29 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.mapper.ClientMapperTest
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Validation error on /api/test: Validation failed for argument [-1] in public java.lang.String java.lang.Object.toString(): 
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Data integrity violation on /api/test: Data integrity violation
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Type mismatch on /api/test: null
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Constraint violation on /api/test: Constraint violation message
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Illegal argument on /api/test: Invalid argument provided
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Business rule violation on /api/test: Business rule violated
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Resource not found on /api/test: Resource not found
+2025-09-21 17:43:30 [main] ERROR c.e.m.e.GlobalExceptionHandler - Unexpected error on /api/test: 
+java.lang.RuntimeException: Unexpected error
+	at com.example.management_selection_admin_seek.exception.GlobalExceptionHandlerTest.handleGenericException_ShouldReturn500(GlobalExceptionHandlerTest.java:306)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775)
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:94)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:52)
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$2(InterceptingLauncher.java:47)
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:46)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:52)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:70)
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:100)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:520)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:748)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:443)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:211)
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Authentication failed on /api/test: Bad credentials
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Resource conflict on /api/test: Resource already exists
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Invalid token on /api/test: Token is invalid
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Access denied on /api/test: Access denied
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Custom authentication error on /api/test: Custom auth error
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Business rule violation on /api/test: Test error
+2025-09-21 17:43:30 [main] WARN  c.e.m.e.GlobalExceptionHandler - Business rule violation on /api/custom/path: Test error
+2025-09-21 17:43:30 [main] WARN  c.e.m.config.JwtAuthenticationFilter - JWT token processing failed: Invalid JWT
+2025-09-21 17:43:30 [main] ERROR c.e.m.config.JwtAuthenticationFilter - Error processing JWT authentication
+java.lang.RuntimeException: Unexpected error
+	at com.example.management_selection_admin_seek.service.JwtService.extractUsername(JwtService.java:60)
+	at com.example.management_selection_admin_seek.config.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:64)
+	at com.example.management_selection_admin_seek.config.JwtAuthenticationFilterTest.doFilterInternal_GeneralException_ShouldClearContextAndContinue(JwtAuthenticationFilterTest.java:275)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775)
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:94)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:52)
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$2(InterceptingLauncher.java:47)
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:46)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:52)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:70)
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:100)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:520)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:748)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:443)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:211)
+2025-09-21 17:43:30 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.repository.UserRepositoryTest]: UserRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:43:30 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.repository.UserRepositoryTest
+2025-09-21 17:43:30 [main] INFO  c.e.m.repository.UserRepositoryTest - Starting UserRepositoryTest using Java 21.0.8 with PID 43538 (started by gsuarezbaron in /Users/gsuarezbaron/Desktop/Seek/management-selection-admin-seek)
+2025-09-21 17:43:30 [main] INFO  c.e.m.repository.UserRepositoryTest - The following 1 profile is active: "test"
+2025-09-21 17:43:30 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-21 17:43:30 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26 ms. Found 2 JPA repository interfaces.
+2025-09-21 17:43:30 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-21 17:43:30 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-21 17:43:30 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-21 17:43:30 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-09-21 17:43:30 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn5: url=jdbc:h2:mem:testdb user=SA
+2025-09-21 17:43:30 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-09-21 17:43:30 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 2.3.232 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-09-21 17:43:30 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-21 17:43:30 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-21 17:43:30 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-21 17:43:30 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:43:30 [main] INFO  c.e.m.repository.UserRepositoryTest - Started UserRepositoryTest in 0.242 seconds (process running for 5.989)
+2025-09-21 17:43:30 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.repository.ClientRepositoryTest]: ClientRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:43:30 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.repository.ClientRepositoryTest
+2025-09-21 17:43:30 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplicationTests]: ManagementSelectionAdminSeekApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-21 17:43:30 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplication for test class com.example.management_selection_admin_seek.ManagementSelectionAdminSeekApplicationTests
+2025-09-21 17:43:30 [main] INFO  c.e.m.ManagementSelectionAdminSeekApplicationTests - Starting ManagementSelectionAdminSeekApplicationTests using Java 21.0.8 with PID 43538 (started by gsuarezbaron in /Users/gsuarezbaron/Desktop/Seek/management-selection-admin-seek)
+2025-09-21 17:43:30 [main] INFO  c.e.m.ManagementSelectionAdminSeekApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-09-21 17:43:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-21 17:43:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 2 JPA repository interfaces.
+2025-09-21 17:43:31 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2025-09-21 17:43:31 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68613002
+2025-09-21 17:43:31 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2025-09-21 17:43:31 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://localhost:3306/seek_admin_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC (MySQL 9.4)
+2025-09-21 17:43:31 [main] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MySQL 9.4 is newer than this version of Flyway and support has not been tested. The latest supported version of MySQL is 8.1.
+2025-09-21 17:43:31 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.018s)
+2025-09-21 17:43:31 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `seek_admin_db`: 2
+2025-09-21 17:43:31 [main] INFO  o.f.core.internal.command.DbMigrate - Schema `seek_admin_db` is up to date. No migration necessary.
+2025-09-21 17:43:31 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-21 17:43:31 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-21 17:43:31 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-21 17:43:31 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-21 17:43:31 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 9.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-21 17:43:31 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-21 17:43:31 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:43:31 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-21 17:43:31 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2025-09-21 17:43:31 [main] INFO  c.e.m.ManagementSelectionAdminSeekApplicationTests - Started ManagementSelectionAdminSeekApplicationTests in 0.897 seconds (process running for 7.235)
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 5, Avg: 35.0, StdDev: 7.0710678118654755
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Getting all clients with derived calculations
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Retrieved 1 clients with derived calculations
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 3, Avg: 30.0, StdDev: 8.16496580927726
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Creating new client: John Doe
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Client created successfully with ID: 1
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - No clients found, returning empty metrics
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 5, Avg: 30.0, StdDev: 7.0710678118654755
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-21 17:43:31 [main] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 4, Avg: 30.0, StdDev: 7.905694150420948
+2025-09-21 17:43:32 [main] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:43:32 [main] INFO  c.e.m.service.UserService - User registered successfully with ID: 1
+2025-09-21 17:43:32 [main] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:43:32 [main] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:43:32 [main] INFO  c.e.m.service.UserService - User registered successfully with ID: 1
+2025-09-21 17:43:32 [main] INFO  c.e.m.service.UserService - Registering new user: testuser
+2025-09-21 17:43:32 [main] WARN  c.e.m.service.JwtService - JWT token has expired: JWT expired 3600226 milliseconds ago at 2025-09-21T21:43:32.000Z. Current time: 2025-09-21T22:43:32.226Z. Allowed clock skew: 0 milliseconds.
+2025-09-21 17:43:32 [main] WARN  c.e.m.service.JwtService - JWT token expiration check failed: JWT expired 3600226 milliseconds ago at 2025-09-21T21:43:32.000Z. Current time: 2025-09-21T22:43:32.226Z. Allowed clock skew: 0 milliseconds.
+2025-09-21 17:43:32 [main] WARN  c.e.m.service.JwtService - JWT token is malformed: Invalid compact JWT string: Compact JWSs must contain exactly 2 period characters, and compact JWEs must contain exactly 4.  Found: 6
+2025-09-21 17:43:32 [main] WARN  c.e.m.service.JwtService - JWT token is null or empty: CharSequence cannot be null or empty.
+2025-09-21 17:43:32 [main] WARN  c.e.m.service.JwtService - JWT token is null or empty: CharSequence cannot be null or empty.
+2025-09-21 17:43:32 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:43:32 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-09-21 17:43:32 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-09-21 17:43:32 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:43:32 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-09-21 17:43:32 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-09-21 17:43:32 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-21 17:43:32 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2025-09-21 17:43:32 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
