@@ -5,6 +5,7 @@ import com.example.management_selection_admin_seek.dto.ClientResponse;
 import com.example.management_selection_admin_seek.dto.ClientDetailResponse;
 import com.example.management_selection_admin_seek.dto.ClientMetricsResponse;
 import com.example.management_selection_admin_seek.entity.Client;
+import com.example.management_selection_admin_seek.exception.BusinessException;
 import com.example.management_selection_admin_seek.mapper.ClientMapper;
 import com.example.management_selection_admin_seek.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
@@ -62,7 +63,7 @@ public class ClientService {
         int ageDifference = Math.abs(providedAge - calculatedAge);
         
         if (ageDifference > 1) {
-            throw new IllegalArgumentException(
+            throw new BusinessException(
                 String.format("Provided age (%d) is not consistent with birth date. " +
                              "Calculated age: %d", providedAge, calculatedAge)
             );

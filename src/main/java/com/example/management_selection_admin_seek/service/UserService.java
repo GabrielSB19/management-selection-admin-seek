@@ -4,6 +4,7 @@ import com.example.management_selection_admin_seek.dto.auth.RegisterRequest;
 import com.example.management_selection_admin_seek.dto.auth.RegisterResponse;
 import com.example.management_selection_admin_seek.entity.User;
 import com.example.management_selection_admin_seek.enums.Role;
+import com.example.management_selection_admin_seek.exception.DuplicateResourceException;
 import com.example.management_selection_admin_seek.mapper.UserMapper;
 import com.example.management_selection_admin_seek.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -59,10 +60,10 @@ public class UserService implements UserDetailsService {
 
         // Validate username and email are unique
         if (userRepository.existsByUsername(request.getUsername())) {
-            throw new IllegalArgumentException("Username already exists");
+            throw new DuplicateResourceException("User", "username", request.getUsername());
         }
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new IllegalArgumentException("Email already exists");
+            throw new DuplicateResourceException("User", "email", request.getEmail());
         }
 
         // Create new user entity using mapper
