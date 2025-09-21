@@ -11,7 +11,8 @@ import com.example.management_selection_admin_seek.dto.ClientResponse;
 import com.example.management_selection_admin_seek.dto.ClientDetailResponse;
 import com.example.management_selection_admin_seek.dto.ClientMetricsResponse;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import jakarta.validation.Valid;
 
@@ -92,14 +93,19 @@ public interface ClientAPI {
     );
 
     /**
-     * Get all clients with derived calculations
+     * Get all clients with derived calculations (Paginated)
      */
     @Operation(
-        summary = "🔒 Get all clients with derived calculations",
-        description = "Retrieve a complete list of all registered clients with their basic information " +
-                      "plus derived calculations including life expectancy, retirement date, and remaining years. " +
-                      "**Requires JWT authentication.**",
-        security = @SecurityRequirement(name = "Bearer Authentication")
+        summary = "🔒 Get all clients with derived calculations (Paginated)",
+        description = "Retrieve clients with their basic information plus derived calculations including " +
+                      "life expectancy, retirement date, and remaining years. Supports pagination for optimal " +
+                      "performance with large datasets. **Requires JWT authentication.**",
+        security = @SecurityRequirement(name = "Bearer Authentication"),
+        parameters = {
+            @Parameter(name = "page", description = "Page number (0-based)", example = "0"),
+            @Parameter(name = "size", description = "Page size (max 100)", example = "20"),
+            @Parameter(name = "sort", description = "Sort criteria (e.g., 'firstName,asc' or 'age,desc')", example = "firstName,asc")
+        }
     )
     @ApiResponses(value = {
         @ApiResponse(
@@ -107,10 +113,35 @@ public interface ClientAPI {
             description = "Clients retrieved successfully",
             content = @Content(
                 mediaType = "application/json",
-                schema = @Schema(implementation = ClientDetailResponse.class),
                 examples = @ExampleObject(
-                    name = "Clients List",
-                    value = "[{\"id\":1,\"name\":\"Juan\",\"lastName\":\"Pérez\",\"fullName\":\"Juan Pérez\",\"age\":30,\"birthDate\":\"1993-05-15\",\"calculatedCurrentAge\":32,\"estimatedRetirementDate\":\"2058-09-19\",\"estimatedLifeExpectancy\":\"2071-09-19\",\"yearsToRetirement\":33,\"estimatedRemainingYears\":46}]"
+                    name = "Paginated Clients Response",
+                    value = """
+                        {
+                          "content": [{
+                            "id": 1,
+                            "firstName": "Juan",
+                            "lastName": "Pérez",
+                            "fullName": "Juan Pérez",
+                            "age": 30,
+                            "birthDate": "1993-05-15",
+                            "calculatedCurrentAge": 32,
+                            "estimatedRetirementDate": "2058-09-19",
+                            "estimatedLifeExpectancy": "2071-09-19",
+                            "yearsToRetirement": 33,
+                            "estimatedRemainingYears": 46
+                          }],
+                          "pageable": {
+                            "sort": {"sorted": true, "orderBy": "firstName,asc"},
+                            "pageNumber": 0,
+                            "pageSize": 20
+                          },
+                          "totalElements": 50,
+                          "totalPages": 3,
+                          "last": false,
+                          "first": true,
+                          "numberOfElements": 20
+                        }
+                        """
                 )
             )
         ),
@@ -128,7 +159,9 @@ public interface ClientAPI {
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @GetMapping
-    ResponseEntity<List<ClientDetailResponse>> getAllClients();
+    ResponseEntity<Page<ClientDetailResponse>> getAllClients(
+        @Parameter(hidden = true) Pageable pageable
+    );
 
     /**
      * Get client metrics and statistics

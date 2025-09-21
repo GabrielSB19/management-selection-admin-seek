@@ -6,7 +6,9 @@ import com.example.management_selection_admin_seek.dto.ClientResponse;
 import com.example.management_selection_admin_seek.dto.ClientDetailResponse;
 import com.example.management_selection_admin_seek.dto.ClientMetricsResponse;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.example.management_selection_admin_seek.service.ClientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -40,15 +42,19 @@ public class ClientController implements ClientAPI {
     }
 
     /**
-     * Get all clients endpoint with derived calculations
+     * Get all clients endpoint with derived calculations (Paginated)
      * GET /api/client
      */
     @Override
-    public ResponseEntity<List<ClientDetailResponse>> getAllClients() {
-        log.info("GET /api/client - Getting all clients with derived calculations");
+    public ResponseEntity<Page<ClientDetailResponse>> getAllClients(Pageable pageable) {
+        log.info("GET /api/client - Getting clients with pagination: page={}, size={}", 
+                 pageable.getPageNumber(), pageable.getPageSize());
         
-        List<ClientDetailResponse> clients = clientService.getAllClientsWithDetails();
-        log.info("Retrieved {} clients with derived calculations", clients.size());
+        Page<ClientDetailResponse> clients = clientService.getAllClientsWithDetails(pageable);
+        log.info("Retrieved {} clients (page {}/{}) with derived calculations", 
+                 clients.getNumberOfElements(), 
+                 clients.getNumber() + 1, 
+                 clients.getTotalPages());
         return ResponseEntity.ok(clients);
     }
 

@@ -16,6 +16,11 @@ import org.springframework.http.ResponseEntity;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -107,34 +112,49 @@ class ClientControllerTest {
     }
 
     @Test
-    @DisplayName("Should get all clients successfully")
-    void getAllClients_ShouldReturnClientList() {
+    @DisplayName("Should get all clients successfully (paginated)")
+    void getAllClients_ShouldReturnClientPage() {
         // Arrange
         List<ClientDetailResponse> clientList = List.of(clientDetailResponse);
-        when(clientService.getAllClientsWithDetails()).thenReturn(clientList);
+        Page<ClientDetailResponse> clientPage = new PageImpl<>(clientList, PageRequest.of(0, 20), 1);
+        Pageable pageable = PageRequest.of(0, 20);
+        when(clientService.getAllClientsWithDetails(any(Pageable.class))).thenReturn(clientPage);
 
         // Act
-        ResponseEntity<List<ClientDetailResponse>> response = clientController.getAllClients();
+        ResponseEntity<Page<ClientDetailResponse>> response = clientController.getAllClients(pageable);
 
         // Assert
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).isEqualTo(clientList);
-        verify(clientService).getAllClientsWithDetails();
+        assertThat(response.getBody()).isNotNull().satisfies(body -> {
+            @SuppressWarnings("unchecked")
+            Page<ClientDetailResponse> page = (Page<ClientDetailResponse>) body;
+            assertThat(page).isEqualTo(clientPage);
+            assertThat(page.getContent()).isEqualTo(clientList);
+            assertThat(page.getTotalElements()).isEqualTo(1);
+        });
+        verify(clientService).getAllClientsWithDetails(any(Pageable.class));
     }
 
     @Test
-    @DisplayName("Should get empty list when no clients exist")
-    void getAllClients_NoClients_ShouldReturnEmptyList() {
+    @DisplayName("Should get empty page when no clients exist")
+    void getAllClients_NoClients_ShouldReturnEmptyPage() {
         // Arrange
-        when(clientService.getAllClientsWithDetails()).thenReturn(List.of());
+        Page<ClientDetailResponse> emptyPage = new PageImpl<>(List.of(), PageRequest.of(0, 20), 0);
+        Pageable pageable = PageRequest.of(0, 20);
+        when(clientService.getAllClientsWithDetails(any(Pageable.class))).thenReturn(emptyPage);
 
         // Act
-        ResponseEntity<List<ClientDetailResponse>> response = clientController.getAllClients();
+        ResponseEntity<Page<ClientDetailResponse>> response = clientController.getAllClients(pageable);
 
         // Assert
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).isEmpty();
-        verify(clientService).getAllClientsWithDetails();
+        assertThat(response.getBody()).isNotNull().satisfies(body -> {
+            @SuppressWarnings("unchecked")
+            Page<ClientDetailResponse> page = (Page<ClientDetailResponse>) body;
+            assertThat(page.getContent()).isEmpty();
+            assertThat(page.getTotalElements()).isEqualTo(0);
+        });
+        verify(clientService).getAllClientsWithDetails(any(Pageable.class));
     }
 
     @Test
@@ -158,17 +178,19 @@ class ClientControllerTest {
         // This test verifies that the controller is a thin layer that delegates to services
         
         // Act - Call all controller methods
+        Page<ClientDetailResponse> clientPage = new PageImpl<>(List.of(clientDetailResponse));
+        Pageable pageable = PageRequest.of(0, 20);
         when(clientService.createClient(any())).thenReturn(clientResponse);
-        when(clientService.getAllClientsWithDetails()).thenReturn(List.of(clientDetailResponse));
+        when(clientService.getAllClientsWithDetails(any(Pageable.class))).thenReturn(clientPage);
         when(clientService.getClientMetrics()).thenReturn(metricsResponse);
 
         clientController.createClient(validRequest);
-        clientController.getAllClients();
+        clientController.getAllClients(pageable);
         clientController.getClientMetrics();
 
         // Assert - Verify all service methods were called
         verify(clientService).createClient(any(ClientCreateRequest.class));
-        verify(clientService).getAllClientsWithDetails();
+        verify(clientService).getAllClientsWithDetails(any(Pageable.class));
         verify(clientService).getClientMetrics();
         verifyNoMoreInteractions(clientService);
     }
