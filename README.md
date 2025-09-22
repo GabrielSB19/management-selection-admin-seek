@@ -243,19 +243,20 @@ View the report at: `build/reports/jacoco/test/html/index.html`
 The API is deployed on **AWS EC2** and is fully operational with the complete monitoring stack.
 
 ### 🌐 Public Access URLs
-```
-🚀 API Base URL: http://52.73.225.3:8080
-📊 Grafana Dashboard: http://52.73.225.3:3000
-📈 Prometheus Metrics: http://52.73.225.3:9090
-📋 API Documentation: http://52.73.225.3:8080/api/swagger-ui.html
-```
+
+- 🚀 API Base URL: http://52.73.225.3:8080
+- 📊 Grafana Dashboard -> [Click here](http://52.73.225.3:3000/d/seek-logs-dashboard/seek-management-logs-dashboard?orgId=1&refresh=5s)
+- 📈 Prometheus Metrics -> [Click here](http://52.73.225.3:9090/targets)
+- 📋 API Documentation ->[Click here](http://52.73.225.3:8080/api/swagger-ui.html)
+
+**Note**: Requests cannot be made from the swager because CORS is not configured in the application.
 
 ### 🔑 SSH Access
 Connect to the EC2 instance using SSH:
 ```bash
 ssh ec2-user@52.73.225.3
 ```
-**Password:** `admin-seek`
+**Password:** `password`
 
 ### 📁 Project Location
 Once connected via SSH, navigate to the project directory:
