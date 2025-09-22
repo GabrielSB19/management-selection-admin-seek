@@ -11013,3 +11013,100 @@ Caused by: java.net.ConnectException: Connection refused
 2025-09-22 04:32:00 [http-nio-8080-exec-10] INFO  c.e.m.service.UserService - Registering new user: dockertest
 2025-09-22 04:32:00 [http-nio-8080-exec-10] INFO  c.e.m.service.UserService - User registered successfully with ID: 2
 2025-09-22 04:32:00 [http-nio-8080-exec-10] INFO  c.e.m.controller.AuthController - Registration successful for: dockertest
+2025-09-22 13:02:32 [http-nio-8080-exec-3] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 491 ms
+2025-09-22 13:23:33 [http-nio-8080-exec-3] INFO  c.e.m.controller.ClientController - GET /api/client/metrics - Getting client metrics
+2025-09-22 13:23:33 [http-nio-8080-exec-3] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-22 13:23:33 [http-nio-8080-exec-3] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 5, Avg: 32.0, StdDev: 5.966573556070519
+2025-09-22 13:23:33 [http-nio-8080-exec-3] INFO  c.e.m.controller.ClientController - Metrics retrieved successfully - Total clients: 5
+2025-09-22 13:40:50 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-22 13:40:51 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-09-22 13:40:51 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22 13:40:51 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-09-22 13:40:51 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-09-22 13:43:10 [main] INFO  c.e.m.ManagementSelectionAdminSeekApplication - Starting ManagementSelectionAdminSeekApplication v0.0.1-SNAPSHOT using Java 21.0.8 with PID 1 (/app/app.jar started by root in /app)
+2025-09-22 13:43:10 [main] INFO  c.e.m.ManagementSelectionAdminSeekApplication - No active profile set, falling back to 1 default profile: "default"
+2025-09-22 13:43:11 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-22 13:43:11 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 41 ms. Found 2 JPA repository interfaces.
+2025-09-22 13:43:12 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-09-22 13:43:12 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-09-22 13:43:12 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-22 13:43:12 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-09-22 13:43:12 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2065 ms
+2025-09-22 13:43:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-09-22 13:43:12 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@15d58530
+2025-09-22 13:43:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-09-22 13:43:12 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql:3306/seek_admin_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC (MySQL 8.0)
+2025-09-22 13:43:13 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.025s)
+2025-09-22 13:43:13 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `seek_admin_db`: 2
+2025-09-22 13:43:13 [main] INFO  o.f.core.internal.command.DbMigrate - Schema `seek_admin_db` is up to date. No migration necessary.
+2025-09-22 13:43:13 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-22 13:43:13 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-22 13:43:13 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-22 13:43:14 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-22 13:43:14 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-22 13:43:14 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.43
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-22 13:43:14 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-22 13:43:14 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22 13:43:15 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-09-22 13:43:15 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-22 13:43:16 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-09-22 13:43:17 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/api'
+2025-09-22 13:43:17 [main] INFO  c.e.m.ManagementSelectionAdminSeekApplication - Started ManagementSelectionAdminSeekApplication in 7.975 seconds (process running for 9.456)
+2025-09-22 13:43:21 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-22 13:43:21 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-09-22 13:43:21 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-09-22 14:03:04 [http-nio-8080-exec-6] INFO  c.e.m.controller.ClientController - GET /api/client/metrics - Getting client metrics
+2025-09-22 14:03:04 [http-nio-8080-exec-6] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-22 14:03:04 [http-nio-8080-exec-6] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 5, Avg: 32.0, StdDev: 5.966573556070519
+2025-09-22 14:03:04 [http-nio-8080-exec-6] INFO  c.e.m.controller.ClientController - Metrics retrieved successfully - Total clients: 5
+2025-09-22 14:07:01 [http-nio-8080-exec-7] INFO  c.e.m.controller.AuthController - Login attempt for: admin
+2025-09-22 14:07:02 [http-nio-8080-exec-7] WARN  c.e.m.e.GlobalExceptionHandler - Authentication failed on /api/auth/login: Bad credentials
+2025-09-22 14:07:06 [http-nio-8080-exec-8] INFO  c.e.m.controller.AuthController - Login attempt for: admin
+2025-09-22 14:07:07 [http-nio-8080-exec-8] INFO  c.e.m.controller.AuthController - Login successful for user: admin
+2025-09-22 14:07:57 [http-nio-8080-exec-2] INFO  c.e.m.controller.AuthController - Registration attempt for: testusexrmanual
+2025-09-22 14:07:57 [http-nio-8080-exec-2] INFO  c.e.m.service.UserService - Registering new user: testusexrmanual
+2025-09-22 14:07:57 [http-nio-8080-exec-2] INFO  c.e.m.service.UserService - User registered successfully with ID: 3
+2025-09-22 14:07:57 [http-nio-8080-exec-2] INFO  c.e.m.controller.AuthController - Registration successful for: testusexrmanual
+2025-09-22 14:08:01 [http-nio-8080-exec-4] WARN  c.e.m.e.GlobalExceptionHandler - Validation error on /api/auth/register: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.example.management_selection_admin_seek.dto.auth.RegisterResponse> com.example.management_selection_admin_seek.controller.AuthController.register(com.example.management_selection_admin_seek.dto.auth.RegisterRequest): [Field error in object 'registerRequest' on field 'lastName': rejected value [null]; codes [NotBlank.registerRequest.lastName,NotBlank.lastName,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [registerRequest.lastName,lastName]; arguments []; default message [lastName]]; default message [Last name is required]] 
+2025-09-22 14:08:06 [http-nio-8080-exec-5] INFO  c.e.m.controller.AuthController - Registration attempt for: testusermanual
+2025-09-22 14:08:06 [http-nio-8080-exec-5] INFO  c.e.m.service.UserService - Registering new user: testusermanual
+2025-09-22 14:08:06 [http-nio-8080-exec-5] INFO  c.e.m.service.UserService - User registered successfully with ID: 4
+2025-09-22 14:08:06 [http-nio-8080-exec-5] INFO  c.e.m.controller.AuthController - Registration successful for: testusermanual
+2025-09-22 14:08:09 [http-nio-8080-exec-6] INFO  c.e.m.controller.AuthController - Registration attempt for: testusermanual
+2025-09-22 14:08:09 [http-nio-8080-exec-6] INFO  c.e.m.service.UserService - Registering new user: testusermanual
+2025-09-22 14:08:09 [http-nio-8080-exec-6] WARN  c.e.m.e.GlobalExceptionHandler - Resource conflict on /api/auth/register: User already exists with username: testusermanual
+2025-09-22 14:08:17 [http-nio-8080-exec-7] INFO  c.e.m.controller.ClientController - POST /api/clients - Creating client: María Elena García López
+2025-09-22 14:08:17 [http-nio-8080-exec-7] INFO  c.e.m.service.ClientService - Creating new client: María Elena García López
+2025-09-22 14:08:17 [http-nio-8080-exec-7] INFO  c.e.m.service.ClientService - Client created successfully with ID: 6
+2025-09-22 14:08:17 [async-1] INFO  c.e.m.service.AsyncProcessingService - 🚀 [ASYNC] Starting background processing for client: María Elena García López
+2025-09-22 14:08:17 [async-1] INFO  c.e.m.service.AsyncProcessingService - 📧 [ASYNC TASK] Sending welcome notification to: María Elena García López
+2025-09-22 14:08:17 [http-nio-8080-exec-7] INFO  c.e.m.controller.ClientController - Client created successfully with ID: 6
+2025-09-22 14:08:17 [async-1] INFO  c.e.m.service.AsyncProcessingService - ✅ [ASYNC TASK] Welcome notification sent successfully
+2025-09-22 14:08:17 [async-1] INFO  c.e.m.service.AsyncProcessingService - 📊 [ASYNC TASK] Generating initial client report
+2025-09-22 14:08:17 [async-1] INFO  c.e.m.service.AsyncProcessingService - ✅ [ASYNC TASK] Client report generated: Client[ID=6, Name=María Elena García López, Age=29, Generation=Millennial]
+2025-09-22 14:08:17 [async-1] INFO  c.e.m.service.AsyncProcessingService - 📈 [ASYNC TASK] Updating system statistics
+2025-09-22 14:08:17 [async-1] INFO  c.e.m.service.AsyncProcessingService - ✅ [ASYNC TASK] System statistics updated
+2025-09-22 14:08:17 [async-1] INFO  c.e.m.service.AsyncProcessingService - 🎉 [ASYNC] All background processing completed for client: 6
+2025-09-22 14:08:22 [http-nio-8080-exec-9] WARN  c.e.m.e.GlobalExceptionHandler - Validation error on /api/client: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.example.management_selection_admin_seek.dto.ClientResponse> com.example.management_selection_admin_seek.controller.ClientController.createClient(com.example.management_selection_admin_seek.dto.ClientCreateRequest) with 4 errors: [Field error in object 'clientCreateRequest' on field 'name': rejected value [A]; codes [Size.clientCreateRequest.name,Size.name,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [clientCreateRequest.name,name]; arguments []; default message [name],100,2]; default message [Name must be between 2 and 100 characters]] [Field error in object 'clientCreateRequest' on field 'lastName': rejected value []; codes [NotBlank.clientCreateRequest.lastName,NotBlank.lastName,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [clientCreateRequest.lastName,lastName]; arguments []; default message [lastName]]; default message [Last name is required]] [Field error in object 'clientCreateRequest' on field 'lastName': rejected value []; codes [Size.clientCreateRequest.lastName,Size.lastName,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [clientCreateRequest.lastName,lastName]; arguments []; default message [lastName],100,2]; default message [Last name must be between 2 and 100 characters]] [Field error in object 'clientCreateRequest' on field 'age': rejected value [15]; codes [Min.clientCreateRequest.age,Min.age,Min.java.lang.Integer,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [clientCreateRequest.age,age]; arguments []; default message [age],18]; default message [Minimum age is 18 years]] 
+2025-09-22 14:08:27 [http-nio-8080-exec-10] INFO  c.e.m.controller.ClientController - POST /api/clients - Creating client: María Elena García López
+2025-09-22 14:08:27 [http-nio-8080-exec-10] INFO  c.e.m.service.ClientService - Creating new client: María Elena García López
+2025-09-22 14:08:27 [http-nio-8080-exec-10] WARN  c.e.m.e.GlobalExceptionHandler - Business rule violation on /api/client: Provided age (50) is not consistent with birth date. Calculated age: 29
+2025-09-22 14:08:31 [http-nio-8080-exec-3] INFO  c.e.m.controller.ClientController - GET /api/client/metrics - Getting client metrics
+2025-09-22 14:08:31 [http-nio-8080-exec-3] INFO  c.e.m.service.ClientService - Calculating client metrics
+2025-09-22 14:08:31 [http-nio-8080-exec-3] INFO  c.e.m.service.ClientService - Metrics calculated - Total: 6, Avg: 31.3333, StdDev: 5.647024782130853
+2025-09-22 14:08:31 [http-nio-8080-exec-3] INFO  c.e.m.controller.ClientController - Metrics retrieved successfully - Total clients: 6
+2025-09-22 14:08:35 [http-nio-8080-exec-2] INFO  c.e.m.controller.ClientController - GET /api/client - Getting clients with pagination: page=0, size=20
+2025-09-22 14:08:35 [http-nio-8080-exec-2] INFO  c.e.m.service.ClientService - Getting clients with derived calculations - Page: 0, Size: 20, Sort: UNSORTED
+2025-09-22 14:08:35 [http-nio-8080-exec-2] INFO  c.e.m.service.ClientService - Retrieved 6 clients (page 1/1) with derived calculations
+2025-09-22 14:08:35 [http-nio-8080-exec-2] INFO  c.e.m.controller.ClientController - Retrieved 6 clients (page 1/1) with derived calculations
+2025-09-22 14:08:35 [http-nio-8080-exec-2] WARN  o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
