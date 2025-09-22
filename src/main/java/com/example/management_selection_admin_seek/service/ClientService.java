@@ -4,11 +4,18 @@ import com.example.management_selection_admin_seek.dto.ClientCreateRequest;
 import com.example.management_selection_admin_seek.dto.ClientResponse;
 import com.example.management_selection_admin_seek.dto.ClientDetailResponse;
 import com.example.management_selection_admin_seek.dto.ClientMetricsResponse;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import com.example.management_selection_admin_seek.entity.Client;
+import com.example.management_selection_admin_seek.exception.BusinessException;
 import com.example.management_selection_admin_seek.mapper.ClientMapper;
 import com.example.management_selection_admin_seek.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,12 +36,21 @@ public class ClientService {
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
     private final ClientCalculationService calculationService;
+    private final AsyncProcessingService asyncProcessingService;
 
     /**
      * Create new client
      * REQUIREMENT: "Create new clients through an endpoint that allows 
      * registering name, last name, age and birth date"
+     * 
+     * CACHE STRATEGY: Evicts both clients and metrics cache when new client is added
+     * - clients: Client listing becomes stale
+     * - client-metrics: Statistics need recalculation
      */
+    @Caching(evict = {
+        @CacheEvict(value = "clients", allEntries = true),
+        @CacheEvict(value = "client-metrics", allEntries = true)
+    })
     public ClientResponse createClient(ClientCreateRequest request) {
         log.info("Creating new client: {} {}", request.getName(), request.getLastName());
         
@@ -49,6 +65,9 @@ public class ClientService {
         
         log.info("Client created successfully with ID: {}", savedClient.getId());
         
+        // 🚀 ASYNC: Process client in background (non-blocking)
+        asyncProcessingService.processNewClient(savedClient);
+        
         // Convert entity to response DTO using MapStruct
         return clientMapper.toResponse(savedClient);
     }
@@ -62,7 +81,7 @@ public class ClientService {
         int ageDifference = Math.abs(providedAge - calculatedAge);
         
         if (ageDifference > 1) {
-            throw new IllegalArgumentException(
+            throw new BusinessException(
                 String.format("Provided age (%d) is not consistent with birth date. " +
                              "Calculated age: %d", providedAge, calculatedAge)
             );
@@ -73,8 +92,12 @@ public class ClientService {
      * Get all clients with complete data and derived calculations
      * REQUIREMENT: "List all registered clients with their complete data 
      * and a derived calculation, such as an estimated date for a future event"
+     * 
+     * CACHE STRATEGY: Caches complete client list with calculations
+     * Cache Key: "clients" (static, no parameters)
      */
     @Transactional(readOnly = true)
+    @Cacheable(value = "clients", key = "'all-clients'")
     public List<ClientDetailResponse> getAllClientsWithDetails() {
         log.info("Getting all clients with derived calculations");
         
@@ -87,6 +110,34 @@ public class ClientService {
         log.info("Retrieved {} clients with derived calculations", clientResponses.size());
         
         return clientResponses;
+    }
+
+    /**
+     * Get all clients with complete data and derived calculations (PAGINATED)
+     * SCALABILITY: Optimized for large datasets with pagination support
+     * REQUIREMENT: Enhanced version for high-performance client listing
+     * 
+     * CACHE STRATEGY: Caches paginated results based on pagination parameters
+     * Cache Key: "clients-page-{pageNumber}-{pageSize}-{sort}"
+     */
+    @Transactional(readOnly = true)
+    @Cacheable(value = "clients", key = "'page-' + #pageable.pageNumber + '-' + #pageable.pageSize + '-' + #pageable.sort.toString()")
+    public Page<ClientDetailResponse> getAllClientsWithDetails(Pageable pageable) {
+        log.info("Getting clients with derived calculations - Page: {}, Size: {}, Sort: {}", 
+                 pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
+        
+        // Get paginated clients from repository  
+        Page<Client> clientsPage = clientRepository.findAll(pageable);
+        
+        // Transform to ClientDetailResponse with derived calculations using existing method
+        Page<ClientDetailResponse> clientResponsesPage = clientsPage.map(this::buildClientDetailResponse);
+        
+        log.info("Retrieved {} clients (page {}/{}) with derived calculations", 
+                 clientResponsesPage.getNumberOfElements(),
+                 clientResponsesPage.getNumber() + 1,
+                 clientResponsesPage.getTotalPages());
+                 
+        return clientResponsesPage;
     }
 
     /**
@@ -112,8 +163,12 @@ public class ClientService {
      * Get client metrics
      * REQUIREMENT: "Query a set of metrics about existing clients, 
      * such as average age and standard deviation of ages"
+     * 
+     * CACHE STRATEGY: Caches expensive statistical calculations
+     * Cache Key: "client-metrics" (static, aggregated data)
      */
     @Transactional(readOnly = true)
+    @Cacheable(value = "client-metrics", key = "'statistics'")
     public ClientMetricsResponse getClientMetrics() {
         log.info("Calculating client metrics");
         
@@ -126,8 +181,8 @@ public class ClientService {
                 .totalClients(0L)
                 .averageAge(0.0)
                 .standardDeviationAge(0.0)
-                .minAge(0)
-                .maxAge(0)
+                .minAge(null)
+                .maxAge(null)
                 .medianAge(0.0)
                 .build();
         }
