@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  * Client Management API - Protected Endpoints
  * Provides endpoints for client registration, listing, and analytics
  * 
- * 🔒 AUTHENTICATION REQUIRED: All endpoints require valid JWT authentication
+ * AUTHENTICATION REQUIRED: All endpoints require valid JWT authentication
  * Use the 'Authorize' button above to authenticate with your access token
  */
 @Tag(name = "Client Management", description = "API for managing clients in the candidate selection system (🔒 Authentication Required)")
@@ -58,7 +58,7 @@ public interface ClientAPI {
                 schema = @Schema(implementation = ClientResponse.class),
                 examples = @ExampleObject(
                     name = "Client Created",
-                    value = "{\"id\":1,\"name\":\"Juan\",\"lastName\":\"Pérez\",\"fullName\":\"Juan Pérez\",\"age\":30,\"birthDate\":\"1993-05-15\",\"creationDate\":\"2025-09-19T10:00:00\",\"updateDate\":\"2025-09-19T10:00:00\"}"
+                    value = "{\"id\":1,\"name\":\"Juan\",\"lastName\":\"Pérez\",\"fullName\":\"Juan Pérez\",\"age\":32,\"birthDate\":\"1993-05-15\",\"creationDate\":\"2025-09-19T10:00:00\",\"updateDate\":\"2025-09-19T10:00:00\"}"
                 )
             )
         ),
@@ -104,7 +104,6 @@ public interface ClientAPI {
         parameters = {
             @Parameter(name = "page", description = "Page number (0-based)", example = "0"),
             @Parameter(name = "size", description = "Page size (max 100)", example = "20"),
-            @Parameter(name = "sort", description = "Sort criteria (e.g., 'firstName,asc' or 'age,desc')", example = "firstName,asc")
         }
     )
     @ApiResponses(value = {
@@ -122,7 +121,7 @@ public interface ClientAPI {
                             "firstName": "Juan",
                             "lastName": "Pérez",
                             "fullName": "Juan Pérez",
-                            "age": 30,
+                            "age": 32,
                             "birthDate": "1993-05-15",
                             "calculatedCurrentAge": 32,
                             "estimatedRetirementDate": "2058-09-19",

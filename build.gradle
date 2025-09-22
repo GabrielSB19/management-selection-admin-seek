@@ -49,7 +49,7 @@ dependencies {
 	implementation 'org.flywaydb:flyway-mysql'
 	
 	// Documentation
-	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.1'
 	
 	// JWT Security
 	implementation 'io.jsonwebtoken:jjwt-api:0.12.3'

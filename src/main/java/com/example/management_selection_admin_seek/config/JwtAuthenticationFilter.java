@@ -51,40 +51,31 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     ) throws ServletException, IOException {
 
         try {
-            // Extract JWT token from request
             String jwt = extractTokenFromRequest(request);
             
             if (jwt == null) {
-                // No token found, continue with filter chain
                 filterChain.doFilter(request, response);
                 return;
             }
 
-            // Extract username from JWT token
             String username = jwtService.extractUsername(jwt);
             
             if (username == null || SecurityContextHolder.getContext().getAuthentication() != null) {
-                // Username is null or user is already authenticated
                 filterChain.doFilter(request, response);
                 return;
             }
 
-            // Load user details
             UserDetails userDetails = userService.loadUserByUsername(username);
             
-            // Validate JWT token
             if (jwtService.isTokenValid(jwt, userDetails)) {
-                // Create authentication token
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                     userDetails,
                     null,
                     userDetails.getAuthorities()
                 );
                 
-                // Set authentication details
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 
-                // Set authentication in security context
                 SecurityContextHolder.getContext().setAuthentication(authToken);
                 
                 log.debug("JWT authentication successful for user: {}", username);
@@ -94,16 +85,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         } catch (JwtException e) {
             log.warn("JWT token processing failed: {}", e.getMessage());
-            // Clear security context in case of JWT errors
             SecurityContextHolder.clearContext();
             
         } catch (Exception e) {
             log.error("Error processing JWT authentication", e);
-            // Clear security context in case of unexpected errors
             SecurityContextHolder.clearContext();
         }
 
-        // Continue with filter chain
         filterChain.doFilter(request, response);
     }
 
@@ -128,8 +116,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected boolean shouldNotFilter(@NonNull HttpServletRequest request) {
         String path = request.getRequestURI();
         
-        // Skip JWT authentication for public endpoints
-        // Spring Security sees paths without context path, so we match accordingly
         return path.startsWith("/auth/") ||
                path.startsWith("/swagger-ui/") ||
                path.startsWith("/api-docs/") ||
