@@ -238,6 +238,8 @@ The API is deployed on **AWS EC2** and is fully operational with the complete mo
 - 📈 Prometheus Metrics -> [Click here](http://52.73.225.3:9090/targets)
 - 📋 API Documentation ->[Click here](http://52.73.225.3:8080/api/swagger-ui.html)
 
+**Note**: Requests cannot be made from the swager because CORS is not configured in the application.
+
 ### 🔑 SSH Access
 Connect to the EC2 instance using SSH:
 ```bash
