@@ -24,7 +24,7 @@ The back-end server is built with **Spring Boot 3.5.6** and **Java 21**. It uses
 - ✅ **Exception Handling** - Centralized error management with appropriate HTTP codes
 - ✅ **Unit & Integration Testing** - Comprehensive test coverage with JaCoCo reporting
 - ✅ **Performance Optimization** - Caching, HTTP compression, pagination
-- ✅ **Asynchronous Processing** - Background tasks for improved responsiveness
+- ✅ **Asynchronous Processing** - Background tasks using Spring @Async thread pool queues
 
 ### Architecture & Design Patterns
 The application follows **Clean Architecture** principles with clear separation of concerns:
@@ -88,6 +88,14 @@ The application follows **Clean Architecture** principles with clear separation 
 - **Docker** - Containerization
 - **Docker Compose** - Multi-container orchestration
 
+## Asynchronous Processing Queue
+
+**Queue Technology:** **Spring @Async + ThreadPoolTaskExecutor**
+
+Simple in-memory thread pool queue for background client processing tasks (notifications, reports, statistics updates). Chosen for **simplicity** and **zero infrastructure overhead** - perfect for this challenge scope.
+
+**Configuration:** 2-4 threads, 50-task queue capacity, async prefix logging.
+
 ## API Endpoints
 
 ### 🔐 Authentication Endpoints
@@ -140,6 +148,9 @@ Grafana provides rich dashboards for visualizing:
 
 # ERROR logs
 {job="seek-management-app"} |= "ERROR"
+
+# Async queue logs
+{job="seek-management-app"} |= "[ASYNC]"
 ```
 
 ### Loki + Promtail
@@ -213,7 +224,7 @@ View the report at: `build/reports/jacoco/test/html/index.html`
 - **📦 Response Compression** - Reduced bandwidth usage  
 - **🗄️ Caching** - Improved response times for frequent queries
 - **📄 Pagination** - Efficient handling of large datasets
-- **⚡ Async Processing** - Non-blocking background tasks
+- **⚡ Async Processing** - Non-blocking background tasks via ThreadPoolTaskExecutor queues
 - **🏊 Connection Pooling** - Optimized database connections
 
 ## Code Quality & Standards
