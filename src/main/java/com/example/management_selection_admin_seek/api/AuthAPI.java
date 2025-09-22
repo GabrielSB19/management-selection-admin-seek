@@ -57,17 +57,6 @@ public interface AuthAPI {
                 )
             )
         ),
-        @ApiResponse(
-            responseCode = "423", 
-            description = "Account locked due to too many failed attempts",
-            content = @Content(
-                mediaType = "application/json",
-                examples = @ExampleObject(
-                    name = "Account Locked",
-                    value = "{\"timestamp\":\"2025-09-19T10:00:00.000+00:00\",\"status\":423,\"error\":\"Locked\",\"message\":\"Account locked due to too many failed login attempts\"}"
-                )
-            )
-        ),
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping("/login")

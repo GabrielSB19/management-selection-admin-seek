@@ -45,7 +45,7 @@ public class ClientCreateRequest {
 
     @Schema(
         description = "Client's current age in years", 
-        example = "30", 
+        example = "32", 
         requiredMode = Schema.RequiredMode.REQUIRED,
         minimum = "18",
         maximum = "120"

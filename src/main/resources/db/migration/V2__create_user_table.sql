@@ -22,5 +22,4 @@ CREATE INDEX idx_users_email ON users(email);
 -- admin: password = admin123
 -- user1: password = user123
 INSERT INTO users (username, email, password, first_name, last_name, role, enabled) VALUES 
-('admin', 'admin@seek.com', '$2a$12$LQv3c1yqBWVHxkd0LQ1lqe4.rCuwCvFKw3YQFU2vDz6CCz6bLOu/6', 'System', 'Administrator', 'ADMIN', TRUE),
-('user1', 'user1@seek.com', '$2a$12$vQJMLhX8OKMSsKbqRbJdMeUcNvyNvl1VFOe4bDcLVzwQVhCZBJ7nS', 'John', 'Doe', 'USER', TRUE);
+('admin', 'admin@seek.com', '$2a$12$W70jbdHbpptsHSTzuVprNe7QF0b02FPUjbFCehjAOzJ3JVrg3BP1q', 'System', 'Administrator', 'ADMIN', TRUE)

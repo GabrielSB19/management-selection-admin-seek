@@ -54,9 +54,21 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             
             .authorizeHttpRequests(auth -> auth
+                // Authentication endpoints (public)
                 .requestMatchers("/auth/**").permitAll()
-                .requestMatchers("/swagger-ui/**", "/api-docs/**").permitAll()
+                
+                // Swagger UI endpoints (public) - ALL Swagger routes
+                .requestMatchers("/swagger-ui/**").permitAll()
+                .requestMatchers("/swagger-ui.html").permitAll()
+                .requestMatchers("/api-docs/**").permitAll() 
+                .requestMatchers("/v3/api-docs/**").permitAll()
+                .requestMatchers("/swagger-resources/**").permitAll()
+                .requestMatchers("/webjars/**").permitAll()
+                
+                // Actuator endpoints (public)
                 .requestMatchers("/actuator/**").permitAll()
+                
+                // Error handling (public)
                 .requestMatchers("/error").permitAll()
                 
                 // Admin-only endpoints
