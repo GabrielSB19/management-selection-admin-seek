@@ -227,4 +227,155 @@ View the report at: `build/reports/jacoco/test/html/index.html`
 
 ---
 
+## AWS EC2 Cloud Deployment
+
+The API is deployed on **AWS EC2** and is fully operational with the complete monitoring stack.
+
+### 🌐 Public Access URLs
+```
+🚀 API Base URL: http://52.73.225.3:8080
+📊 Grafana Dashboard: http://52.73.225.3:3000
+📈 Prometheus Metrics: http://52.73.225.3:9090
+📋 API Documentation: http://52.73.225.3:8080/api/swagger-ui.html
+```
+
+### 🔑 SSH Access
+Connect to the EC2 instance using SSH:
+```bash
+ssh ec2-user@52.73.225.3
+```
+**Password:** `admin-seek`
+
+### 📁 Project Location
+Once connected via SSH, navigate to the project directory:
+```bash
+cd /home/ec2-user/management-selection-admin-seek
+```
+
+### 🖥️ Service Management
+**View running services:**
+```bash
+docker-compose ps
+```
+
+**View application logs:**
+```bash
+docker logs seek-app --tail=50 -f
+```
+
+**Restart the complete stack:**
+```bash
+docker-compose down && docker-compose up -d
+```
+
+### 🔐 Cloud Service Credentials
+
+**Grafana Dashboard Access:**
+- **URL:** http://52.73.225.3:3000
+- **Username:** `admin`
+- **Password:** `admin`
+
+**API Authentication:**
+- **Username:** `admin`
+- **Email:** `admin@seek.com`
+- **Password:** `admin123`
+
+**Database Access (MySQL):**
+- **Host:** `52.73.225.3:3306`
+- **Database:** `seek_admin_db`
+- **Username:** `root`
+- **Password:** `admin123`
+
+### 🏗️ Deployment Architecture
+```
+┌─────────────────────────────────────────────────────────┐
+│                    AWS EC2 Instance                     │
+│                   52.73.225.3                          │
+├─────────────────────────────────────────────────────────┤
+│  🐳 Docker Compose Stack                               │
+│  ├── 📱 Spring Boot App       (Port 8080)             │
+│  ├── 🗄️  MySQL Database       (Port 3306)             │
+│  ├── 📊 Grafana               (Port 3000)             │
+│  ├── 📈 Prometheus            (Port 9090)             │
+│  ├── 📋 Loki                  (Port 3100)             │
+│  └── 🚚 Promtail              (Log Shipping)          │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Postman Collections
+
+The project includes comprehensive **Postman collections** for testing all API endpoints with pre-configured environments.
+
+### 📦 Collection Files
+Located in the `postman/` directory:
+- **`Seek - Management.postman_collection.json`** - Main API collection
+- **`Seek Local.postman_environment.json`** - Local development environment
+- **`Seek Cloud.postman_environment.json`** - AWS EC2 production environment
+
+### 🧪 Test Coverage
+The collection includes **13 comprehensive tests** covering:
+
+**🔐 Authentication Endpoints:**
+- ✅ **201 - Register User** - Successful user registration
+- ❌ **422 - Register User** - Validation errors
+- ❌ **409 - Register User** - Duplicate user conflict
+- ✅ **200 - Login** - Successful authentication
+- ❌ **422 - Login** - Invalid credentials format
+- ❌ **401 - Login** - Authentication failure
+
+**👥 Client Management Endpoints:**
+- ✅ **200 - Create Client** - Successful client creation
+- ❌ **422 - Create Client** - Validation errors (age/birthdate mismatch)
+- ❌ **400 - Create Client** - Bad request format
+- ✅ **200 - Get Metrics** - Statistical analysis
+- ✅ **200 - Get All Client** - Client listing with life expectancy calculations
+
+### 🚀 How to Use
+
+1. **Import Collections:**
+   - Open Postman
+   - Import `Seek - Management.postman_collection.json`
+   - Import both environment files
+
+2. **Select Environment:**
+   - **For Local Testing:** Select `Seek Local` environment
+   - **For Cloud Testing:** Select `Seek Cloud` environment
+
+3. **Authentication Workflow:**
+   ```
+   1️⃣ Run "200 - Login" request
+   2️⃣ Copy the JWT token from response
+   3️⃣ Token is automatically stored in {{token_seek}} variable
+   4️⃣ All protected endpoints use this token automatically
+   ```
+
+4. **Environment Variables:**
+   ```bash
+   # Local Environment
+   protocol: http
+   host: localhost
+   port: 8080
+   baseUrl: api
+
+   # Cloud Environment  
+   protocol: http
+   host: 52.73.225.3
+   port: 8080
+   baseUrl: api
+   ```
+
+### 🎯 Pre-configured Test Data
+Each request includes realistic test data:
+- **User Registration:** Complete user profiles with validation
+- **Client Creation:** Age-consistent client data (32 years old, born 1993-05-15)
+- **Authentication:** Valid admin credentials
+- **Error Scenarios:** Invalid data for testing error handling
+
+### 🔄 Automated Testing
+The collection supports:
+- **Environment Switching** - Seamless local ↔ cloud testing
+- **Token Management** - Automatic JWT handling
+- **Error Validation** - Expected error responses for negative tests
+- **Data Consistency** - Realistic test scenarios
+
 **🏆 This implementation demonstrates enterprise-grade Spring Boot development with modern DevOps practices, comprehensive testing, and production-ready monitoring solutions.**
