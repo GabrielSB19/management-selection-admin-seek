@@ -207,54 +207,6 @@ docker-compose up -d mysql loki grafana prometheus promtail
 ```
 View the report at: `build/reports/jacoco/test/html/index.html`
 
-### Verify coverage thresholds:
-```bash
-./gradlew jacocoTestCoverageVerification
-```
-
-## Example Usage
-
-### 1. Register a new user:
-```bash
-curl -X POST http://localhost:8080/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "username": "testuser",
-    "email": "test@example.com", 
-    "password": "password123",
-    "fullName": "Test User"
-  }'
-```
-
-### 2. Login to get JWT token:
-```bash
-curl -X POST http://localhost:8080/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{
-    "identifier": "admin",
-    "password": "admin123"
-  }'
-```
-
-### 3. Create a new client (using JWT token):
-```bash
-curl -X POST http://localhost:8080/api/client \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "firstName": "Juan",
-    "lastName": "Pérez", 
-    "age": 32,
-    "birthDate": "1993-05-15"
-  }'
-```
-
-### 4. Get client metrics:
-```bash
-curl -X GET http://localhost:8080/api/client/metrics \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
-```
-
 ## Performance Features
 
 - **🚀 HTTP/2 Support** - Enhanced connection efficiency
