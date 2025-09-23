@@ -244,19 +244,18 @@ The API is deployed on **AWS EC2** and is fully operational with the complete mo
 
 ### 🌐 Public Access URLs
 
-- 🚀 API Base URL: http://52.73.225.3:8080
-- 📊 Grafana Dashboard -> [Click here](http://52.73.225.3:3000/d/seek-logs-dashboard/seek-management-logs-dashboard?orgId=1&refresh=5s)
-- 📈 Prometheus Metrics -> [Click here](http://52.73.225.3:9090/targets)
-- 📋 API Documentation ->[Click here](http://52.73.225.3:8080/api/swagger-ui.html)
+- 🚀 API Base URL: http://54.234.168.199:8080
+- 📊 Grafana Dashboard -> [Click here](http://54.234.168.199:3000/d/seek-logs-dashboard/seek-management-logs-dashboard?orgId=1&refresh=5s)
+- 📈 Prometheus Metrics -> [Click here](http://54.234.168.199:9090/targets)
+- 📋 API Documentation ->[Click here](http://54.234.168.199:8080/api/swagger-ui.html)
 
 **Note**: Requests cannot be made from the swager because CORS is not configured in the application.
 
 ### 🔑 SSH Access
 Connect to the EC2 instance using SSH:
 ```bash
-ssh ec2-user@52.73.225.3
+ssh -i seek.pem ec2-user@54.234.168.199
 ```
-**Password:** `password`
 
 ### 📁 Project Location
 Once connected via SSH, navigate to the project directory:
@@ -283,7 +282,7 @@ docker-compose down && docker-compose up -d
 ### 🔐 Cloud Service Credentials
 
 **Grafana Dashboard Access:**
-- **URL:** http://52.73.225.3:3000
+- **URL:** http://54.234.168.199:3000
 - **Username:** `admin`
 - **Password:** `admin`
 
@@ -293,7 +292,7 @@ docker-compose down && docker-compose up -d
 - **Password:** `admin123`
 
 **Database Access (MySQL):**
-- **Host:** `52.73.225.3:3306`
+- **Host:** `54.234.168.199:3306`
 - **Database:** `seek_admin_db`
 - **Username:** `root`
 - **Password:** `admin123`
@@ -302,7 +301,7 @@ docker-compose down && docker-compose up -d
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    AWS EC2 Instance                     │
-│                   52.73.225.3                          │
+│                     54.234.168.199                      │
 ├─────────────────────────────────────────────────────────┤
 │  🐳 Docker Compose Stack                               │
 │  ├── 📱 Spring Boot App       (Port 8080)             │
@@ -371,7 +370,7 @@ The collection includes **13 comprehensive tests** covering:
 
    # Cloud Environment  
    protocol: http
-   host: 52.73.225.3
+   host: 54.234.168.199
    port: 8080
    baseUrl: api
    ```
